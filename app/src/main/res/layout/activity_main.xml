@@ -20,7 +20,7 @@
         android:background="#FFCCCC"
         android:layout_gravity="fill"
         android:text=""
-        android:textSize="50sp" />
+        android:textSize="60sp" />
 
     <Button
         android:layout_row="6"
