@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">jsq</string>
     <string name="_123">123</string>
-    <string name="hui_tui">回退</string>
-    <string name="clear">清空</string>
+    <string name="Back">Back</string>
+    <string name="clear">C</string>
     <string name="percent">%</string>
     <string name="mul">*</string>
     <string name="seven">7</string>
