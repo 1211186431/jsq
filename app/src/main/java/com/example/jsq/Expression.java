@@ -1,5 +1,6 @@
 package com.example.jsq;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class Expression {
@@ -19,16 +20,20 @@ public class Expression {
                             postfix.append(stack.pop());
                         }
                         stack.push(ch + " "); // ջ��string����
-
+                        i++;
+                        break;
                     } else {
-                        postfix.append("-"); // 如果是表示负数的-号直接加到后缀表达式里面
+                        while (stack.isEmpty() == false && (isPriority(stack.lastElement(), 100))) {
+                            postfix.append(stack.pop());
+                        }
+                        stack.push("f ");
+                        i++;
+                        break;
                     }
-                    i++;
-                    break;
+
                 case '*':
                 case '/':
-                    while (stack.isEmpty() == false
-                            && (stack.lastElement().equals("*") || stack.lastElement().equals("/"))) {
+                    while (stack.isEmpty() == false && (isPriority(stack.lastElement(), 10))) {
                         postfix.append(stack.pop());
                     }
                     stack.push(ch + " ");
@@ -46,6 +51,20 @@ public class Expression {
                     }
                     i++;
                     break;
+                case 's': //sin
+                case 'c': //cos
+                case 'T': // 三次方
+                case '^': // 平方
+                case 't'://tan
+                case 'l'://log
+                case '%'://百分号
+                    while (stack.isEmpty() == false && (isPriority(stack.lastElement(), 100))) {
+                        postfix.append(stack.pop());
+                    }
+                    stack.push(ch + " ");
+                    i++;
+                    break;
+
                 default:
                     while ((i < infix.length() && ch >= '0' && ch <= '9') || ch == '.') {
                         postfix.append(ch);
@@ -66,57 +85,15 @@ public class Expression {
 
     }
 
-    public static int toValue(StringBuffer postfix) {
-        Stack<Integer> stack = new Stack<Integer>();
-        int i;
-        for (i = 0; i < postfix.length(); i++) {
-            char t = postfix.charAt(i);
-            if (t >= '0' && t <= '9') {
-                int value = 0; // �ַ�ת��Ϊ��
-                while (t != ' ') {
-                    value = value * 10 + t - '0';
-                    t = postfix.charAt(++i); // ��һλ
-                }
-                stack.push(value);
-
-            } else {
-                if (t != ' ') {
-                    int x = stack.pop();
-                    int y = stack.pop();
-                    switch (t) {
-                        case '+':
-                            stack.push(x + y);
-                            break;
-                        case '-':
-                            stack.push(y - x);
-                            break;
-                        case '*':
-                            stack.push(x * y);
-                            break;
-                        case '/':
-                            stack.push(y / x);
-                            break;
-                    }
-
-                }
-
-            }
-
-        }
-        return stack.pop();
-    }
-
-    public static float toValue2(StringBuffer postfix) {
-        float value = 0;
-        Stack<Float> stack = new Stack<Float>();
+    public static double toValue2(StringBuffer postfix) {
+        double value = 0;
+        Stack<Double> stack = new Stack<Double>();
         String str = postfix.toString();
         String[] s = str.split(" ");
         for (int i = 0; i < s.length; i++) {
-            if (s[i].equals("+") || s[i].equals("-") || s[i].equals("*") || s[i].equals("/")) {
-                float x = stack.pop();
-                float y = stack.pop();
-                System.out.println("x=" + x);
-                System.out.println("y=" + y);
+            if (isPriority(s[i], 2)) {
+                double x = stack.pop();
+                double y = stack.pop();
                 switch (s[i]) {
                     case "+":
                         stack.push(x + y);
@@ -131,14 +108,61 @@ public class Expression {
                         stack.push(y / x);
                         break;
                 }
+            } else if (isPriority(s[i], 100)) {
+                double x = stack.pop();
+                switch (s[i]) {
+                    case "^": // 平方
+                        stack.push(x * x);
+                        break;
+                    case "f": // 负号
+                        stack.push((-1) * x);
+                        break;
+                    case "T":
+                        stack.push(x * x * x);// 三次方
+                        break;
+                    case "s":  //sin
+                        stack.push(Math.sin(x));
+                        break;
+                    case "c":  //cos
+                        stack.push(Math.cos(x));
+                        break;
+                    case "t":  //tan
+                        stack.push(Math.tan(x));
+                        break;
+                    case "l":  //log
+                        stack.push(Math.log(x));
+                        break;
+                    case "%":
+                        stack.push(x/100);
+                        break;
+                }
             } else {
-
-                float f = Float.parseFloat(s[i]);
+                double f = Double.parseDouble(s[i]);
                 stack.push(f);
             }
 
         }
         value = stack.pop();
         return value;
+    }
+
+    public static boolean isPriority(String a, int l) {
+        boolean P = false;
+        if (l == 2) {
+            if (a.equals("+") || a.equals("-") || a.equals("*") || a.equals("/")) {
+                P = true;
+            }
+        }
+        if (l == 10) {
+            if (a.equals("*") || a.equals("/") || a.equals("^") || a.equals("f") || a.equals("T")||a.equals("s")||a.equals("c")||a.equals("t")||a.equals("l")||a.equals("%")) {
+                P = true;
+            }
+        }
+        if (l == 100) {
+            if (a.equals("^") || a.equals("f") || a.equals("T")||a.equals("s")||a.equals("c")||a.equals("t")||a.equals("l")||a.equals("%")) {
+                P = true;
+            }
+        }
+        return P;
     }
 }

@@ -20,4 +20,12 @@
     <string name="zero">0</string>
     <string name="point">.</string>
     <string name="divide">/</string>
+    <string name="left_b">(</string>
+    <string name="right_b">)</string>
+    <string name="sin">sin</string>
+    <string name="cos">cos</string>
+    <string name="squ">^2</string>
+    <string name="cub">^3</string>
+    <string name="log">log</string>
+    <string name="tan">tan</string>
 </resources>

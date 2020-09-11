@@ -141,7 +141,55 @@ public class MainActivity extends AppCompatActivity {
         String old=txt.getText().toString();
         String str=e.toPostfix(old).toString();
         String[] s=str.split(" ");
-        float a=e.toValue2(e.toPostfix(old));
+        double a=e.toValue2(e.toPostfix(old));
         txt.setText(a+"");
+    }
+
+    public void onclickSqu(View view) {
+        TextView txt = (TextView)findViewById(R.id.txt);
+        String old=txt.getText().toString();
+        txt.setText(old+"^");
+    }
+
+    public void onclickCub(View view) {
+        TextView txt = (TextView)findViewById(R.id.txt);
+        String old=txt.getText().toString();
+        txt.setText(old+"T");
+    }
+
+    public void onclickLog(View view) {
+        TextView txt = (TextView)findViewById(R.id.txt);
+        String old=txt.getText().toString();
+        txt.setText(old+"l");
+    }
+
+    public void onclickTan(View view) {
+        TextView txt = (TextView)findViewById(R.id.txt);
+        String old=txt.getText().toString();
+        txt.setText(old+"t");
+    }
+
+    public void onclickLeft_B(View view) {
+        TextView txt = (TextView)findViewById(R.id.txt);
+        String old=txt.getText().toString();
+        txt.setText(old+"(");
+    }
+
+    public void onclickRight_B(View view) {
+        TextView txt = (TextView)findViewById(R.id.txt);
+        String old=txt.getText().toString();
+        txt.setText(old+")");
+    }
+
+    public void onclickSin(View view) {
+        TextView txt = (TextView)findViewById(R.id.txt);
+        String old=txt.getText().toString();
+        txt.setText(old+"s");
+    }
+
+    public void onclickCos(View view) {
+        TextView txt = (TextView)findViewById(R.id.txt);
+        String old=txt.getText().toString();
+        txt.setText(old+"c");
     }
 }

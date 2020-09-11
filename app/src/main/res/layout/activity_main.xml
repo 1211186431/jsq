@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:columnCount="5"
-    android:rowCount="7"
+    android:rowCount="9"
     android:orientation="horizontal"
     android:alignmentMode="alignBounds"
     tools:context=".MainActivity">
@@ -22,9 +22,60 @@
         android:layout_gravity="fill"
         android:text=""
         android:textSize="60sp" />
+    <Button
+        android:layout_row="8"
+        android:layout_column="1"
+        android:id="@+id/squ"
+        android:text="@string/squ"
+        android:onClick="onclickSqu"/>
+    <Button
+        android:layout_row="8"
+        android:layout_column="2"
+        android:id="@+id/cub"
+        android:text="@string/cub"
+        android:onClick="onclickCub"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_row="8"
+        android:layout_column="3"
+        android:id="@+id/log"
+        android:text="@string/log"
+        android:onClick="onclickLog"/>
+
+    <Button
+        android:layout_row="8"
+        android:layout_column="4"
+        android:id="@+id/tan"
+        android:text="@string/tan"
+        android:onClick="onclickTan"/>
+    <Button
+        android:layout_row="7"
+        android:layout_column="1"
+        android:id="@+id/left_B"
+        android:text="@string/left_b"
+        android:onClick="onclickLeft_B"/>
+    <Button
+        android:layout_row="7"
+        android:layout_column="2"
+        android:id="@+id/right_B"
+        android:text="@string/right_b"
+        android:onClick="onclickRight_B"/>
+
+    <Button
+        android:layout_row="7"
+        android:layout_column="3"
+        android:id="@+id/sin"
+        android:text="@string/sin"
+        android:onClick="onclickSin"/>
+
+    <Button
+        android:layout_row="7"
+        android:layout_column="4"
+        android:id="@+id/cos"
+        android:text="@string/cos"
+        android:onClick="onclickCos"/>
+
+    <Button
         android:layout_row="6"
         android:layout_column="1"
         android:id="@+id/percent"
