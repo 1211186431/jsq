@@ -146,7 +146,7 @@ public class Expression {
         return value;
     }
 
-    public static boolean isPriority(String a, int l) {
+    public static boolean isPriority(String a, int l) {  //判断优先级
         boolean P = false;
         if (l == 2) {
             if (a.equals("+") || a.equals("-") || a.equals("*") || a.equals("/")) {
