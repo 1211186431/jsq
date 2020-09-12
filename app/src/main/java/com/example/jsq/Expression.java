@@ -85,15 +85,29 @@ public class Expression {
 
     }
 
-    public static double toValue2(StringBuffer postfix) {
+    public static double toValue2(StringBuffer postfix,int E[]) {  //E[0]判断错误
         double value = 0;
+        int e=1;
         Stack<Double> stack = new Stack<Double>();
         String str = postfix.toString();
         String[] s = str.split(" ");
         for (int i = 0; i < s.length; i++) {
             if (isPriority(s[i], 2)) {
-                double x = stack.pop();
-                double y = stack.pop();
+                double x=1;
+                double y=1;
+                if(stack.isEmpty()) {   //错误验证
+                    e=-1;
+                }
+                else {
+                    x = stack.pop();
+                }
+
+                if(stack.isEmpty()) {
+                    e=-1;
+                }
+                else {
+                    y = stack.pop();
+                }
                 switch (s[i]) {
                     case "+":
                         stack.push(x + y);
@@ -109,7 +123,13 @@ public class Expression {
                         break;
                 }
             } else if (isPriority(s[i], 100)) {
-                double x = stack.pop();
+                double x = 1;
+                if(stack.isEmpty()) {
+                    e=-1;
+                }
+                else {
+                    x = stack.pop();
+                }
                 switch (s[i]) {
                     case "^": // 平方
                         stack.push(x * x);
@@ -142,9 +162,15 @@ public class Expression {
             }
 
         }
-        value = stack.pop();
+        if(e==1) {
+            value = stack.pop();
+        }
+        else {
+            E[0]=-1;
+        }
         return value;
     }
+
 
     public static boolean isPriority(String a, int l) {  //判断优先级
         boolean P = false;
