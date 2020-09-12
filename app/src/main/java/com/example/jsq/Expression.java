@@ -15,15 +15,15 @@ public class Expression {
                 case '-':
                     Boolean a2 = (i != 0) && (ch == '-') && (infix.charAt(i - 1) >= '0' && infix.charAt(i - 1) <= '9'); // 表示-号前面为数字的时候
                     Boolean a3 = (i != 0) && (ch == '-') && (infix.charAt(i - 1) == ')'); // 表示-号前面为)的时候
-                    if (a2 || a3 || ch == '+') {
-                        while (!stack.isEmpty() && !stack.lastElement().equals("(")) { // �жϳ�ջ
+                    if (a2.booleanValue() || a3.booleanValue() || ch == '+') {
+                        while (stack.isEmpty() == false && !stack.lastElement().equals("(")) { // �жϳ�ջ
                             postfix.append(stack.pop());
                         }
                         stack.push(ch + " ");
                         i++;
                         break;
                     } else {
-                        while (!stack.isEmpty() && (isPriority(stack.lastElement(), 100))) {
+                        while (stack.isEmpty() == false && (isPriority(stack.lastElement(), 100))) {
                             postfix.append(stack.pop());
                         }
                         stack.push("f ");
@@ -33,7 +33,7 @@ public class Expression {
 
                 case '*':
                 case '/':
-                    while (!stack.isEmpty() && (isPriority(stack.lastElement(), 10))) {
+                    while (stack.isEmpty() == false && (isPriority(stack.lastElement(), 10))) {
                         postfix.append(stack.pop());
                     }
                     stack.push(ch + " ");
@@ -44,11 +44,15 @@ public class Expression {
                     i++;
                     break;
                 case ')':
-                    String out = stack.pop(); // Ҫ��ջ�ķ���
-                    while (out != null && !out.equals("(")) {
-                        postfix.append(out);
-                        out = stack.pop();
+                    if(!stack.isEmpty()) {
+                        String out = stack.pop();
+                        while (out != null && !out.equals("(")) {
+                            postfix.append(out);
+                            out = stack.pop();
+                        }
                     }
+                    else
+                        postfix.append("..");
                     i++;
                     break;
                 case 's': //sin
@@ -58,7 +62,7 @@ public class Expression {
                 case 't'://tan
                 case 'l'://log
                 case '%'://百分号
-                    while (!stack.isEmpty() && (isPriority(stack.lastElement(), 100))) {
+                    while (stack.isEmpty() == false && (isPriority(stack.lastElement(), 100))) {
                         postfix.append(stack.pop());
                     }
                     stack.push(ch + " ");
@@ -212,6 +216,11 @@ public class Expression {
                 isTrue=false;
                 break;
             }
+            if(s.charAt(i)=='('||s.charAt(i)==')'){
+                isTrue=false;
+                break;
+            }
+
         }
 
         return isTrue;
