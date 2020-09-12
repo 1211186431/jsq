@@ -15,15 +15,15 @@ public class Expression {
                 case '-':
                     Boolean a2 = (i != 0) && (ch == '-') && (infix.charAt(i - 1) >= '0' && infix.charAt(i - 1) <= '9'); // 表示-号前面为数字的时候
                     Boolean a3 = (i != 0) && (ch == '-') && (infix.charAt(i - 1) == ')'); // 表示-号前面为)的时候
-                    if (a2.booleanValue() || a3.booleanValue() || ch == '+') {
-                        while (stack.isEmpty() == false && !stack.lastElement().equals("(")) { // �жϳ�ջ
+                    if (a2 || a3 || ch == '+') {
+                        while (!stack.isEmpty() && !stack.lastElement().equals("(")) { // �жϳ�ջ
                             postfix.append(stack.pop());
                         }
-                        stack.push(ch + " "); // ջ��string����
+                        stack.push(ch + " ");
                         i++;
                         break;
                     } else {
-                        while (stack.isEmpty() == false && (isPriority(stack.lastElement(), 100))) {
+                        while (!stack.isEmpty() && (isPriority(stack.lastElement(), 100))) {
                             postfix.append(stack.pop());
                         }
                         stack.push("f ");
@@ -33,7 +33,7 @@ public class Expression {
 
                 case '*':
                 case '/':
-                    while (stack.isEmpty() == false && (isPriority(stack.lastElement(), 10))) {
+                    while (!stack.isEmpty() && (isPriority(stack.lastElement(), 10))) {
                         postfix.append(stack.pop());
                     }
                     stack.push(ch + " ");
@@ -58,7 +58,7 @@ public class Expression {
                 case 't'://tan
                 case 'l'://log
                 case '%'://百分号
-                    while (stack.isEmpty() == false && (isPriority(stack.lastElement(), 100))) {
+                    while (!stack.isEmpty() && (isPriority(stack.lastElement(), 100))) {
                         postfix.append(stack.pop());
                     }
                     stack.push(ch + " ");
@@ -66,11 +66,11 @@ public class Expression {
                     break;
 
                 default:
-                    while ((i < infix.length() && ch >= '0' && ch <= '9') || ch == '.') {
+                    while (i < infix.length() && ((ch >= '0' && ch <= '9') || ch == '.')) {  //点后面没符号不能终止
                         postfix.append(ch);
                         i++;
-                        if (i < infix.length()) { // ��λ��
-                            ch = infix.charAt(i); // �����
+                        if(i<infix.length()) {
+                            ch=infix.charAt(i);
                         }
                     }
                     postfix.append(" ");
@@ -85,7 +85,7 @@ public class Expression {
 
     }
 
-    public static double toValue2(StringBuffer postfix,int E[]) {  //E[0]判断错误
+    public static double toValue2(StringBuffer postfix,int E[]) { //E[0]判断错误
         double value = 0;
         int e=1;
         Stack<Double> stack = new Stack<Double>();
@@ -95,14 +95,14 @@ public class Expression {
             if (isPriority(s[i], 2)) {
                 double x=1;
                 double y=1;
-                if(stack.isEmpty()) {   //错误验证
+                if(stack.isEmpty()||!isTrue(s[i])) {
                     e=-1;
                 }
                 else {
                     x = stack.pop();
                 }
 
-                if(stack.isEmpty()) {
+                if(stack.isEmpty()||!isTrue(s[i])) {
                     e=-1;
                 }
                 else {
@@ -124,7 +124,7 @@ public class Expression {
                 }
             } else if (isPriority(s[i], 100)) {
                 double x = 1;
-                if(stack.isEmpty()) {
+                if(stack.isEmpty()||!isTrue(s[i])) {
                     e=-1;
                 }
                 else {
@@ -157,7 +157,14 @@ public class Expression {
                         break;
                 }
             } else {
-                double f = Double.parseDouble(s[i]);
+                double f;
+                if(!isTrue(s[i])) {
+                    e=-1;
+                    f=0;
+                }
+                else {
+                    f= Double.parseDouble(s[i]);
+                }
                 stack.push(f);
             }
 
@@ -171,8 +178,7 @@ public class Expression {
         return value;
     }
 
-
-    public static boolean isPriority(String a, int l) {  //判断优先级
+    public static boolean isPriority(String a, int l) {
         boolean P = false;
         if (l == 2) {
             if (a.equals("+") || a.equals("-") || a.equals("*") || a.equals("/")) {
@@ -190,5 +196,24 @@ public class Expression {
             }
         }
         return P;
+    }
+    public static boolean isTrue(String s){  //判断点是否正确
+        boolean isTrue=true;
+        int n=0;
+        for(int i=0;i<s.length();i++) {
+            if(s.charAt(i)=='.') {
+                n++;
+                if(i==0) {
+                    isTrue=false;
+                    break;
+                }
+            }
+            if(n>1) {
+                isTrue=false;
+                break;
+            }
+        }
+
+        return isTrue;
     }
 }
