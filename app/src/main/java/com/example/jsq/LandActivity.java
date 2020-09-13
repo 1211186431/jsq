@@ -3,39 +3,32 @@ package com.example.jsq;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class LandActivity extends AppCompatActivity {
     ArrayList<String> list = new ArrayList<String>();
     int needClear = 1;
     Tool tool = new Tool();
     String[] i1 = {""};
     String[] i2 = {""};
     double before;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.land);
     }
-
     public void onclickZero(View view) {
         if (needClear == -1)
             list.clear();
@@ -254,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
             needClear = -1;
             txt.setText(result);
         } else {
-            Toast.makeText(MainActivity.this, "计算错误", Toast.LENGTH_LONG).show();
+            Toast.makeText(LandActivity.this, "计算错误", Toast.LENGTH_LONG).show();
         }
 
     }
@@ -340,8 +333,8 @@ public class MainActivity extends AppCompatActivity {
         btnOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                final View viewDialog = LayoutInflater.from(MainActivity.this).inflate(R.layout.activity_chang_du, null, false);
+                AlertDialog.Builder builder = new AlertDialog.Builder(LandActivity.this);
+                final View viewDialog = LayoutInflater.from(LandActivity.this).inflate(R.layout.activity_chang_du, null, false);
 
                 Spinner spinner = (Spinner) viewDialog.findViewById(R.id.chang_du1);
                 spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -419,8 +412,8 @@ public class MainActivity extends AppCompatActivity {
         btnOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                final View viewDialog = LayoutInflater.from(MainActivity.this).inflate(R.layout.activity_jin_zhi, null, false);
+                AlertDialog.Builder builder = new AlertDialog.Builder(LandActivity.this);
+                final View viewDialog = LayoutInflater.from(LandActivity.this).inflate(R.layout.activity_jin_zhi, null, false);
 
                 Spinner spinner = (Spinner) viewDialog.findViewById(R.id.jin_zhi1);
                 spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -496,8 +489,8 @@ public class MainActivity extends AppCompatActivity {
         btnOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                final View viewDialog = LayoutInflater.from(MainActivity.this).inflate(R.layout.activity_ti_ji, null, false);
+                AlertDialog.Builder builder = new AlertDialog.Builder(LandActivity.this);
+                final View viewDialog = LayoutInflater.from(LandActivity.this).inflate(R.layout.activity_ti_ji, null, false);
 
                 Spinner spinner = (Spinner) viewDialog.findViewById(R.id.ti_ji1);
                 spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

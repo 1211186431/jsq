@@ -17,7 +17,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/j_before"
             android:hint="输入数据"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@color/colorPrimaryDark"
+            android:autofillHints="" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -36,7 +37,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/zhan_huan"
-        android:text="转换">
+        android:id="@+id/j_zhan_huan"
+        android:text="@string/zhuan_haun">
     </Button>
 </LinearLayout>
