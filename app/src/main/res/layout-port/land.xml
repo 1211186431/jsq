@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    >
+    tools:ignore="MissingDefaultResource">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -55,8 +55,8 @@
         android:layout_row="5"
         android:layout_column="3"
         android:id="@+id/hen"
-        android:text="@string/heng"
-        android:onClick="onclickheng"/>
+        android:text="@string/help"
+        android:onClick="onclickHelp"/>
 
     <Button
         android:layout_row="4"

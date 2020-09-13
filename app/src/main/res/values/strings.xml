@@ -33,6 +33,10 @@
     <string name="jin_zhi">进制</string>
     <string name="heng">横屏</string>
     <string name="zhuan_haun">转换</string>
+    <string name="e">e</string>
+    <string name="pi">Π</string>
+    <string name="shu_ping">竖屏</string>
+    <string name="help">帮助</string>
     <string-array name="chang_du">
         <item>千米</item>
         <item>米</item>

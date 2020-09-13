@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -563,12 +564,37 @@ public class LandActivity extends AppCompatActivity {
         });
     }
 
-    public void onclickheng(View view) {
-        Intent intent=
-                new Intent(this,LandActivity.class);
-        startActivity(intent);
-
+  public void onclickE(View view) {
+        if (needClear == -1)
+            list.clear();
+        TextView txt = (TextView) findViewById(R.id.txt);
+        String old = tool.NeedClear(needClear, txt.getText().toString());
+        needClear = 1;
+        txt.setText(old + Math.E);
+        list.add(Math.E+"");
     }
 
+    public void onclickPi(View view) {
+        if (needClear == -1)
+            list.clear();
+        TextView txt = (TextView) findViewById(R.id.txt);
+        String old = tool.NeedClear(needClear, txt.getText().toString());
+        needClear = 1;
+        txt.setText(old + Math.PI);
+        list.add(Math.PI+"");
+    }
 
+    public void onclickHelp(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(LandActivity.this);
+        final View viewDialog = LayoutInflater.from(LandActivity.this).inflate(R.layout.activity_help, null, false);
+        builder.setTitle("帮助")
+                .setView(viewDialog)
+                .setNegativeButton("返回", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+        builder.create().show();
+    }
 }
