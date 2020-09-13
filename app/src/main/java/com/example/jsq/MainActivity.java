@@ -1,10 +1,13 @@
 package com.example.jsq;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -326,4 +329,82 @@ public class MainActivity extends AppCompatActivity {
         list.add("c");
     }
 
+    public void onclickChang(View view) {
+        Button btnOne=(Button)findViewById(R.id.chang);
+        btnOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);// 创建一个view，并且将布局加入view中
+                final View viewDialog = LayoutInflater.from(MainActivity.this).inflate(R.layout.activity_chang_du, null, false);
+                builder.setTitle("长度转换")
+                        .setView(viewDialog)
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {                //取得用户输入内容，注意findViewById前面的viewDialog，表示在该view里面进行查找
+
+                            }        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }        });
+                builder.create().show();
+
+            }
+        });
+    }
+
+    public void onclickTi(View view) {
+        Button btnOne=(Button)findViewById(R.id.ti);
+        btnOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);// 创建一个view，并且将布局加入view中
+                final View viewDialog = LayoutInflater.from(MainActivity.this).inflate(R.layout.activity_ti_ji, null, false);
+                builder.setTitle("体积转换")
+                        .setView(viewDialog)
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {                //取得用户输入内容，注意findViewById前面的viewDialog，表示在该view里面进行查找
+
+                            }        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }        });
+                builder.create().show();
+
+            }
+        });
+    }
+
+    public void onclickJin(View view) {
+        Button btnOne=(Button)findViewById(R.id.jin);
+        btnOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);// 创建一个view，并且将布局加入view中
+                final View viewDialog = LayoutInflater.from(MainActivity.this).inflate(R.layout.activity_jin_zhi, null, false);
+                builder.setTitle("进制转换")
+                        .setView(viewDialog)
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {                //取得用户输入内容，注意findViewById前面的viewDialog，表示在该view里面进行查找
+
+                            }        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }        });
+                builder.create().show();
+
+            }
+        });
+    }
+
+        public void onclickheng(View view) {
+
+    }
 }

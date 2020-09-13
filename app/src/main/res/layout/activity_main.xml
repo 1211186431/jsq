@@ -25,65 +25,38 @@
     android:layout_height="0dp"
     android:layout_weight="1.4"
     android:columnCount="4"
-    android:rowCount="7"
+    android:rowCount="6"
     android:orientation="horizontal"
     android:alignmentMode="alignBounds"
     tools:context=".MainActivity"
     android:layout_gravity="center">
 
-
-    <Button
-        android:layout_row="6"
-        android:layout_column="0"
-        android:id="@+id/squ"
-        android:text="@string/squ"
-        android:onClick="onclickSqu"/>
-    <Button
-        android:layout_row="6"
-        android:layout_column="1"
-        android:id="@+id/cub"
-        android:text="@string/cub"
-        android:onClick="onclickCub"/>
-
-    <Button
-        android:layout_row="6"
-        android:layout_column="2"
-        android:id="@+id/log"
-        android:text="@string/log"
-        android:onClick="onclickLog"/>
-
-    <Button
-        android:layout_row="6"
-        android:layout_column="3"
-        android:id="@+id/tan"
-        android:text="@string/tan"
-        android:onClick="onclickTan"/>
     <Button
         android:layout_row="5"
         android:layout_column="0"
-        android:id="@+id/left_B"
-        android:text="@string/left_b"
-        android:onClick="onclickLeft_B"/>
+        android:id="@+id/chang"
+        android:text="@string/chang_du"
+        android:onClick="onclickChang"/>
     <Button
         android:layout_row="5"
         android:layout_column="1"
-        android:id="@+id/right_B"
-        android:text="@string/right_b"
-        android:onClick="onclickRight_B"/>
+        android:id="@+id/ti"
+        android:text="@string/ti_ji"
+        android:onClick="onclickTi"/>
 
     <Button
         android:layout_row="5"
         android:layout_column="2"
-        android:id="@+id/sin"
-        android:text="@string/sin"
-        android:onClick="onclickSin"/>
+        android:id="@+id/jin"
+        android:text="@string/jin_zhi"
+        android:onClick="onclickJin"/>
 
     <Button
         android:layout_row="5"
         android:layout_column="3"
-        android:id="@+id/cos"
-        android:text="@string/cos"
-        android:onClick="onclickCos"/>
+        android:id="@+id/hen"
+        android:text="@string/heng"
+        android:onClick="onclickheng"/>
 
     <Button
         android:layout_row="4"

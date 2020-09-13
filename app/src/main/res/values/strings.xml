@@ -28,4 +28,28 @@
     <string name="cub">^3</string>
     <string name="log">log</string>
     <string name="tan">tan</string>
+    <string name="chang_du">长度</string>
+    <string name="ti_ji">体积</string>
+    <string name="jin_zhi">进制</string>
+    <string name="heng">横屏</string>
+    <string-array name="chang_du">
+        <item>千米</item>
+        <item>米</item>
+        <item>英寸</item>
+        <item>英尺</item>
+        <item>码</item>
+    </string-array>
+    <string-array name="ti_ji">
+        <item>毫升</item>
+        <item>立方厘米</item>
+        <item>升</item>
+        <item>立方米</item>
+        <item>立法英寸</item>
+    </string-array>
+    <string-array name="jin_zhi">
+        <item>二进制</item>
+        <item>八进制</item>
+        <item>十进制</item>
+        <item>十六进制</item>
+    </string-array>
 </resources>
