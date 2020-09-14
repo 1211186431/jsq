@@ -48,6 +48,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:onClick="onclickTi"
+                android:id="@+id/ti"
                 android:text="@string/ti_ji" />
 
             <Button

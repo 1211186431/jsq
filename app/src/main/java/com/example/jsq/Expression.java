@@ -48,7 +48,13 @@ public class Expression {
                         String out = stack.pop();
                         while (out != null && !out.equals("(")) {
                             postfix.append(out);
-                            out = stack.pop();
+                            if(stack.isEmpty()) {
+                                postfix.append("..");
+                            }
+                            else {
+                                out = stack.pop();
+                                break;
+                            }
                         }
                     }
                     else
