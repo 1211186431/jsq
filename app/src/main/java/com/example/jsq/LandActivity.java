@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -25,11 +26,23 @@ public class LandActivity extends AppCompatActivity {
     String[] i1 = {""};
     String[] i2 = {""};
     double before;
+    String Tag = "tag";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.land);
+        if (savedInstanceState == null) {
+            Log.e(Tag, "-------onCreate--------" + savedInstanceState);
+        } else {
+            TextView ttt = findViewById(R.id.txt);
+
+            Log.e(Tag, "-------onCreate--------" + savedInstanceState.getStringArrayList("oldlist").toString());
+            list = savedInstanceState.getStringArrayList("oldlist");
+            ttt.setText(savedInstanceState.getString("old"));
+        }
     }
+
     public void onclickZero(View view) {
         if (needClear == -1)
             list.clear();
@@ -233,9 +246,12 @@ public class LandActivity extends AppCompatActivity {
         Expression e = new Expression();
         StringBuilder s = new StringBuilder();
         TextView txt = findViewById(R.id.txt);
-        for (int i = 0; i < list.size(); i++) {
-            s.append(list.get(i));
-        }
+        if (list.isEmpty()) {
+            s.append("0");
+        } else
+            for (int i = 0; i < list.size(); i++) {
+                s.append(list.get(i));
+            }
         int E[] = {0};
         double a = e.toValue2(e.toPostfix(s.toString()), E);
 
@@ -372,21 +388,20 @@ public class LandActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         EditText textView = viewDialog.findViewById(R.id.c_before);
-                        Tool tool=new Tool();
+                        Tool tool = new Tool();
                         String b;
                         TextView t2 = viewDialog.findViewById(R.id.c_after);
                         if (textView.getText() != null && textView.getText().toString().length() > 0) {
                             b = textView.getText().toString();
                         } else
                             b = "false";
-                        if(tool.isTrue(b)){
+                        if (tool.isTrue(b)) {
                             before = Double.parseDouble(b);
                             Change change = new Change();
                             double after = change.chang_du_change(change.xu_hao(i1[0]), change.xu_hao(i2[0]), before);
 
                             t2.setText(after + "");
-                        }
-                        else
+                        } else
                             t2.setText("错误");
 
                     }
@@ -451,7 +466,7 @@ public class LandActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         EditText textView = viewDialog.findViewById(R.id.j_before);
-                        Tool tool=new Tool();
+                        Tool tool = new Tool();
                         String b;
                         TextView t2 = viewDialog.findViewById(R.id.j_after);
                         if (textView.getText() != null && textView.getText().toString().length() > 0) {
@@ -459,11 +474,10 @@ public class LandActivity extends AppCompatActivity {
                         } else
                             b = "false";
                         Change change = new Change();
-                        if(tool.isTrue(b,change.xu_hao(i1[0]))){
+                        if (tool.isTrue(b, change.xu_hao(i1[0]))) {
                             String after = change.jin_zhi_change(change.xu_hao(i1[0]), change.xu_hao(i2[0]), b);
                             t2.setText(after + "");
-                        }
-                        else
+                        } else
                             t2.setText("错误");
 
                     }
@@ -528,21 +542,20 @@ public class LandActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         EditText textView = viewDialog.findViewById(R.id.t_before);
-                        Tool tool=new Tool();
+                        Tool tool = new Tool();
                         String b;
                         TextView t2 = viewDialog.findViewById(R.id.t_after);
                         if (textView.getText() != null && textView.getText().toString().length() > 0) {
                             b = textView.getText().toString();
                         } else
                             b = "false";
-                        if(tool.isTrue(b)){
+                        if (tool.isTrue(b)) {
                             before = Double.parseDouble(b);
                             Change change = new Change();
                             double after = change.ti_ji_change(change.xu_hao(i1[0]), change.xu_hao(i2[0]), before);
 
                             t2.setText(after + "");
-                        }
-                        else
+                        } else
                             t2.setText("错误");
 
                     }
@@ -564,14 +577,14 @@ public class LandActivity extends AppCompatActivity {
         });
     }
 
-  public void onclickE(View view) {
+    public void onclickE(View view) {
         if (needClear == -1)
             list.clear();
         TextView txt = (TextView) findViewById(R.id.txt);
         String old = tool.NeedClear(needClear, txt.getText().toString());
         needClear = 1;
         txt.setText(old + Math.E);
-        list.add(Math.E+"");
+        list.add(Math.E + "");
     }
 
     public void onclickPi(View view) {
@@ -581,7 +594,7 @@ public class LandActivity extends AppCompatActivity {
         String old = tool.NeedClear(needClear, txt.getText().toString());
         needClear = 1;
         txt.setText(old + Math.PI);
-        list.add(Math.PI+"");
+        list.add(Math.PI + "");
     }
 
     public void onclickHelp(View view) {
@@ -597,4 +610,17 @@ public class LandActivity extends AppCompatActivity {
                 });
         builder.create().show();
     }
+
+    protected void onSaveInstanceState(Bundle outState) {
+
+        // TODO Auto-generated method stub
+
+        super.onSaveInstanceState(outState);
+        TextView e = findViewById(R.id.txt);
+
+        outState.putString("old", e.getText().toString());
+        outState.putStringArrayList("oldlist", list);
+        Log.v(Tag, "sussess");
+    }
+
 }
