@@ -598,17 +598,19 @@ public class LandActivity extends AppCompatActivity {
     }
 
     public void onclickHelp(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(LandActivity.this);
-        final View viewDialog = LayoutInflater.from(LandActivity.this).inflate(R.layout.activity_help, null, false);
-        builder.setTitle("帮助")
-                .setView(viewDialog)
-                .setNegativeButton("返回", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-        builder.create().show();
+//        AlertDialog.Builder builder = new AlertDialog.Builder(LandActivity.this);
+//        final View viewDialog = LayoutInflater.from(LandActivity.this).inflate(R.layout.activity_help, null, false);
+//        builder.setTitle("帮助")
+//                .setView(viewDialog)
+//                .setNegativeButton("返回", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                    }
+//                });
+//        builder.create().show();
+        Intent intent=new Intent(LandActivity.this,CActivity.class);
+        startActivity(intent);
     }
 
     protected void onSaveInstanceState(Bundle outState) {

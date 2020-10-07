@@ -5,8 +5,8 @@ import java.util.Stack;
 
 public class Expression {
     public static StringBuffer toPostfix(String infix) {
-        Stack<String> stack = new Stack<String>(); // ������ջ
-        StringBuffer postfix = new StringBuffer(infix.length() * 2); // �������
+        Stack<String> stack = new Stack<String>();
+        StringBuffer postfix = new StringBuffer(infix.length() * 2);
         int i = 0;
         while (i < infix.length()) {
             char ch = infix.charAt(i);
