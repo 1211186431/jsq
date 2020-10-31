@@ -151,13 +151,13 @@ public class Expression {
                         stack.push(x * x * x);// 三次方
                         break;
                     case "s":  //sin
-                        stack.push(Math.sin(x));
+                        stack.push(Math.sin(x*Math.PI/180));
                         break;
                     case "c":  //cos
-                        stack.push(Math.cos(x));
+                        stack.push(Math.cos(x*Math.PI/180));
                         break;
                     case "t":  //tan
-                        stack.push(Math.tan(x));
+                        stack.push(Math.tan(x*Math.PI/180));
                         break;
                     case "l":  //log
                         stack.push(Math.log(x));

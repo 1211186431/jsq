@@ -65,7 +65,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layout_gravity="fill_vertical"
-                android:text="帮助" />
+                android:text="帮助"
+                android:onClick="onclickHelp2"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/er_lie"

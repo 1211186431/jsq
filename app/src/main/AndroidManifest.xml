@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".help" />
         <activity android:name=".chang_du" />
         <activity android:name=".CActivity"/>
         <activity android:name=".LandActivity">

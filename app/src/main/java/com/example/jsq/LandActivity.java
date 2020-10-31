@@ -612,7 +612,19 @@ public class LandActivity extends AppCompatActivity {
         Intent intent=new Intent(LandActivity.this,CActivity.class);
         startActivity(intent);
     }
+    public void onclickHelp2(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(LandActivity.this);
+        final View viewDialog = LayoutInflater.from(LandActivity.this).inflate(R.layout.activity_help, null, false);
+        builder.setTitle("帮助")
+                .setView(viewDialog)
+                .setNegativeButton("返回", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
+                    }
+                });
+        builder.create().show();
+    }
     protected void onSaveInstanceState(Bundle outState) {
 
         // TODO Auto-generated method stub
